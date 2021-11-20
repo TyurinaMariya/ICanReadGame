@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ICanRead.Core.Controls.ImageTextButton">
+    <ContentView.Content>
+        
+        <Grid x:Name="innerGrid">
+            
+            
+            <Image  x:Name="innerImageButton"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                BackgroundColor="Transparent"
+                     />
+            
+            <Label  x:Name="innerLabel"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center"
+               FontAttributes="Bold"
+               TextColor="#F3453B" 
+               BackgroundColor="Transparent"
+             />
+
+            <Label  x:Name="innerClickedLabel"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center"
+               FontAttributes="Bold"
+               TextColor="#F3453B" 
+               BackgroundColor="Transparent"
+                    IsVisible="false"
+             />
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

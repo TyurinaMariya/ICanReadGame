@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mvx:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ICanRead.Core.Pages.GameOverPage"
+             xmlns:res="clr-namespace:ICanRead.Core.Resources;assembly=ICanRead.Core"
+             xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                    xmlns:controls="clr-namespace:ICanRead.Core.Controls"
+                    xmlns:local="clr-namespace:ICanRead.Core.Controls;assembly=ICanRead.Core"
+                    BackgroundImage="gameover.png"
+                      NavigationPage.HasNavigationBar="False"
+             >
+    <AbsoluteLayout>
+
+
+
+        <controls:ImageTextButton x:Name="List"  
+                        Margin="0,0,2,0"
+                        ImageSource ="levelslistbutton.png"
+                        ClickedImageSource="levelslistbuttonclicked.png"
+                        AbsoluteLayout.LayoutBounds="0.3,0.755,0.26,0.12" 
+                        HorizontalOptions="EndAndExpand"
+                        AbsoluteLayout.LayoutFlags="All" 
+                        BackgroundColor="Transparent"
+                        Command="{Binding ShowLevelsListCommand}"
+                              >
+        </controls:ImageTextButton>
+
+
+        <controls:ImageTextButton  x:Name="Repeat"  
+                        Margin="0,0,2,0"
+                                    ImageSource ="repeatbutton.png"
+                        ClickedImageSource="repeatbuttonclicked.png"
+                     HorizontalOptions="StartAndExpand"
+                       AbsoluteLayout.LayoutBounds="0.72,0.755,0.26,0.12" 
+                 AbsoluteLayout.LayoutFlags="All" 
+                      BackgroundColor="Transparent"
+                     Command="{Binding RepeatLevelCommand}"
+                              >
+        </controls:ImageTextButton>
+       
+        
+        
+        <Label       AbsoluteLayout.LayoutBounds="0.61,0.65,0.3,0.1" 
+                 AbsoluteLayout.LayoutFlags="All" 
+            x:Name="score"
+               VerticalOptions="Center" 
+               Text="{Binding Score}"
+               HorizontalOptions="Center"
+               FontAttributes="Bold"
+                     FontSize="20"
+               TextColor="#F3453B" 
+               BackgroundColor="Transparent"
+             />
+        <Image  AbsoluteLayout.LayoutBounds="0.55,0.42,0.5,0.2" 
+                 AbsoluteLayout.LayoutFlags="All" >
+            <Image.Triggers>
+                <DataTrigger TargetType="Image" Binding="{Binding StarsCount}" Value="0">
+                    <Setter Property="Source" Value="zerostarsscore.png" />
+                </DataTrigger>
+                <DataTrigger TargetType="Image" Binding="{Binding StarsCount}" Value="1">
+                    <Setter Property="Source" Value="onestarscore.png" />
+                </DataTrigger>
+                <DataTrigger TargetType="Image" Binding="{Binding StarsCount}" Value="2">
+                    <Setter Property="Source" Value="twostarsscore.png" />
+                </DataTrigger>
+                <DataTrigger TargetType="Image" Binding="{Binding StarsCount}" Value="3">
+                    <Setter Property="Source" Value="threestarsscore.png" />
+                </DataTrigger>
+            </Image.Triggers>
+        </Image>
+
+
+    </AbsoluteLayout>
+</mvx:MvxContentPage>

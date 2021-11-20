@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mvx:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="ICanRead.Core.Pages.MainPage"
+                    xmlns:res="clr-namespace:ICanRead.Core.Resources;assembly=ICanRead.Core"
+                    xmlns:controls="clr-namespace:ICanRead.Core.Controls"
+                    xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                    xmlns:converters="clr-namespace:ICanRead.Core.Converters"
+                    xmlns:gesture="clr-namespace:ICanRead.Core.Customization"
+                    
+                    BackgroundImage="mpbackground.png"
+                    NavigationPage.HasNavigationBar="False"
+                    >
+
+    <mvx:MvxContentPage.Resources>
+        <converters:LangToImageNameConverter x:Key="LangToImageNameConverter"/>
+        <converters:StringEqualityConverter x:Key="StringEqualityConverter"/>
+    </mvx:MvxContentPage.Resources>
+
+
+    <AbsoluteLayout HorizontalOptions="Start" VerticalOptions="Start">
+
+        <!--<Image   AbsoluteLayout.LayoutBounds="0.87,0.3,0.5,0.08" 
+                 AbsoluteLayout.LayoutFlags="All" 
+                Source="{Binding CurrentLanguage, Converter={StaticResource LangToImageNameConverter}, ConverterParameter=ua}"    BackgroundColor="Transparent" 
+                x:Name="uaImage"
+                    >
+            <Image.GestureRecognizers>
+                <gesture:PressedGestureRecognizer  Command="{Binding PressedGestureCommand}"  CommandParameter="ua"/>
+            </Image.GestureRecognizers>
+        </Image>
+
+        <Image  AbsoluteLayout.LayoutBounds="0.67,0.4,0.5,0.08" 
+                 AbsoluteLayout.LayoutFlags="All"  Source="{Binding CurrentLanguage, Converter={StaticResource LangToImageNameConverter}, ConverterParameter=en}" 
+            BackgroundColor="Transparent"
+               x:Name="enImage">
+            <Image.GestureRecognizers>
+                <gesture:PressedGestureRecognizer  Command="{Binding PressedGestureCommand}"  CommandParameter="en"/>
+            </Image.GestureRecognizers>
+        </Image>
+
+
+        <ImageButton   
+            AbsoluteLayout.LayoutBounds="0.47,0.5,0.5,0.08" 
+            AbsoluteLayout.LayoutFlags="All" 
+            Source="{Binding CurrentLanguage, Converter={StaticResource LangToImageNameConverter}, ConverterParameter=ru}" 
+            BackgroundColor="Transparent"
+            x:Name="ruImage"
+            Command="{Binding PressedGestureCommand}"  CommandParameter="ru">
+            <ImageButton.GestureRecognizers>
+                <gesture:PressedGestureRecognizer  Command="{Binding PressedGestureCommand}"  CommandParameter="ru"/>
+            </ImageButton.GestureRecognizers>
+        </ImageButton>-->
+
+        <controls:ImageTextButton  x:Name="StartButton"
+                                   ImageSource="startbtn.png"  
+                                   ClickedImageSource="startbtnclicked.png" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   BackgroundColor="Transparent"
+                                   AbsoluteLayout.LayoutBounds="0.18,0.53,0.25,0.16"
+                                   AbsoluteLayout.LayoutFlags="All" 
+                                   Command ="{Binding StartCommand}" 
+                     >
+        </controls:ImageTextButton>
+    </AbsoluteLayout>
+</mvx:MvxContentPage>

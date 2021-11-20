@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mvx:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ICanRead.Core.Pages.GamesListPage"
+             xmlns:res="clr-namespace:ICanRead.Core.Resources;assembly=ICanRead.Core"
+             xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             BackgroundImage="gamelistbackground.png"
+             NavigationPage.HasNavigationBar="False"
+             >
+  <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>-->
+
+        <ImageButton Grid.Row="3" Grid.Column="0" 
+                     Margin="10,0,0,0"
+                     HorizontalOptions="Start"
+                      Command="{Binding BackCommand}"
+                     Source="arrowBack.png"
+               BackgroundColor="Transparent">
+
+        </ImageButton>
+      
+        <ImageButton Grid.Row="0" Grid.Column="0"  
+                     Margin="10,10,10,10"
+                      Command="{Binding FindWordGameCommand}"
+                     HorizontalOptions="Center"
+               BackgroundColor="Transparent">
+            <ImageButton.Triggers>
+                <DataTrigger TargetType="ImageButton" Binding="{Binding CurrentLang}" Value="ua">
+                    <Setter Property="Source" Value="findwordgame_ua.png" />
+                </DataTrigger>
+                <DataTrigger TargetType="ImageButton" Binding="{Binding CurrentLang}" Value="ru">
+                    <Setter Property="Source" Value="findwordgame_ru.png" />
+                </DataTrigger>
+                <DataTrigger TargetType="ImageButton" Binding="{Binding CurrentLang}" Value="en">
+                    <Setter Property="Source" Value="findwordgame_en.png" />
+                </DataTrigger>
+            </ImageButton.Triggers>
+        </ImageButton>
+
+        <ImageButton Grid.Row="1" Grid.Column="0"   
+                     Margin="10,10,10,10"
+               BackgroundColor="Transparent"
+                     HorizontalOptions="Center"
+                     Command="{Binding TypeWordGameCommand}">
+            <ImageButton.Triggers>
+                <DataTrigger TargetType="ImageButton" Binding="{Binding CurrentLang}" Value="ua">
+                    <Setter Property="Source" Value="typewordgame_ua.png" />
+                </DataTrigger>
+                <DataTrigger TargetType="ImageButton" Binding="{Binding CurrentLang}" Value="ru">
+                    <Setter Property="Source" Value="typewordgame_ru.png" />
+                </DataTrigger>
+                <DataTrigger TargetType="ImageButton" Binding="{Binding CurrentLang}" Value="en">
+                    <Setter Property="Source" Value="typewordgame_en.png" />
+                </DataTrigger>
+            </ImageButton.Triggers>
+        </ImageButton>
+       
+        <ImageButton Grid.Row="2" Grid.Column="0" 
+                     HorizontalOptions="Center"
+                     Margin="10,10,10,10"
+                 Command="{Binding FindPictureGameCommand}"
+              BackgroundColor="Transparent">
+            <ImageButton.Triggers>
+                <DataTrigger TargetType="ImageButton" Binding="{Binding CurrentLang}" Value="ua">
+                    <Setter Property="Source" Value="findpicgame_ua.png" />
+                </DataTrigger>
+                <DataTrigger TargetType="ImageButton" Binding="{Binding CurrentLang}" Value="ru">
+                    <Setter Property="Source" Value="findpicgame_ru.png" />
+                </DataTrigger>
+                <DataTrigger TargetType="ImageButton" Binding="{Binding CurrentLang}" Value="en">
+                    <Setter Property="Source" Value="findpicgame_en.png" />
+                </DataTrigger>
+            </ImageButton.Triggers>
+        </ImageButton>
+    </Grid>
+</mvx:MvxContentPage>
