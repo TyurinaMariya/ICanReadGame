@@ -1,6 +1,7 @@
 ﻿using ICanRead.Core.Services;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
 
 namespace ICanRead.Core.Model
 {
@@ -15,10 +16,11 @@ namespace ICanRead.Core.Model
         public string Text { get; set; }
         public int Complexity { get; set; }
         public string Lang { get; set; }
-        public string AudioFileName
-        {
-            get; set;
-        }
+        [NotMapped]
+        public string AudioFileName => $"{Path.GetFileNameWithoutExtension(Entity.PictureFileName)}.{Lang}.mp3";
+        //{
+        //    get; set;
+        //}
     
 
     }

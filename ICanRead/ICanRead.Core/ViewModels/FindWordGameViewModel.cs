@@ -5,6 +5,7 @@
 
 using Acr.UserDialogs;
 using ICanRead.Core.Model;
+using ICanRead.Core.Resources;
 using ICanRead.Core.Services;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
@@ -12,7 +13,9 @@ using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 
@@ -124,6 +127,7 @@ namespace ICanRead.Core.ViewModels
         public IMvxAsyncCommand<Word> ChooseWordCommand =>
             new MvxAsyncCommand<Word>(async (word) =>
             {
+               
                 if (word == AnswerWord)
                 {
                     CorrectAnswers++;
@@ -148,19 +152,24 @@ namespace ICanRead.Core.ViewModels
 
                     else
                     {
-                        await _playerService.GetSeriesPlayer()
-                                            .AddWord(word)
-                                            .AddCorrectAnswerSound()
-                                            .Play();
-                        _wordNumber++;
-                        await InitWords();
+                        await (_playerService.GetSeriesPlayer()
+                                              .AddWord(word)
+                                              .AddCorrectAnswerSound()
+                                            .Play()
+                                            .ContinueWith(async t=> {
+                                                _wordNumber++;
+                                                 await InitWords();
+                                            },TaskScheduler.Default));
                     }
                 }
                 else
                 {
-                    await _playerService.GetSeriesPlayer()
-                                            .AddWord(word)
-                                            .Play();
+                    //var fileName = "ICanRead.Core.Resources.Audio.Words." + word.AudioFileName;
+                    //var embeddedResourceDbStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fileName);
+                    //await MediaManager.CrossMediaManager.Current.Play(embeddedResourceDbStream, word.AudioFileName).ConfigureAwait(false);
+
+                    await _playerService.PlayWord(word);
+                    await Task.Delay(2000);
                     _wrongAnswers++;
                 }
             });

@@ -111,7 +111,7 @@ namespace ICanRead.Core.Model
                          l.Complexity == answerWord.Complexity
                          &&
                          l.Lang == answerWord.Lang)
-                    //.Include(l=>l.Entity)
+                    .Include(l=>l.Entity)
                     .ToArrayAsync();
             }
         }

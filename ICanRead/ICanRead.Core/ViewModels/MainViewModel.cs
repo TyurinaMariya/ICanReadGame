@@ -55,6 +55,9 @@ namespace ICanRead.Core.ViewModels
             new MvxAsyncCommand(async () =>
             {
                 await _playerService.PlayClickSound();
+
+               
+
                 await _navigationService.Navigate<LevelsViewModel, (string lang, GameTypes gameType)>
                                           ((CurrentLanguage, GameTypes.FindWord));
 
