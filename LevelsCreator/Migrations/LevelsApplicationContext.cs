@@ -1,4 +1,4 @@
-﻿using ICanRead.Core.Model;
+﻿using LevelsCreator.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace LevelsCreator.Migrations

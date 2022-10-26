@@ -1,5 +1,4 @@
-﻿using ICanRead.Core.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -10,17 +9,17 @@ using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.IO;
+using LevelsCreator.Model;
 
 namespace LevelsCreator
 {
     public partial class Form1 : Form
     {
-        const string path = "game.db";
         DataManager _dataManager;
         IList<Word> levelWords, langWords;
         public Form1()
         {
-             _dataManager = new DataManager(Path.Combine(Application.StartupPath, @"..\..\..\..\", "game.db"));
+             _dataManager = new DataManager(AppData.DbPath);
             InitializeComponent();
             Load += Form1_Load;
             entittiesGridView.AutoGenerateColumns = false;
@@ -61,9 +60,6 @@ namespace LevelsCreator
         }
 
         
-
-        
-
         private async void levelsGridView_SelectionChanged(object sender, EventArgs e)
         {
             if (levelsGridView.CurrentRow == null)
@@ -106,6 +102,7 @@ namespace LevelsCreator
         private async void saveToolStripButton_Click(object sender, EventArgs e)
         {
             await _dataManager.SaveChanges();
+           //   AppData.JsonFilePath
 
         }
 

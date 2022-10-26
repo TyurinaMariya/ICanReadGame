@@ -36,8 +36,8 @@ namespace LevelsCreator
             this.WordId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WordText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Complexity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Wordlang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AudioFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Wordlang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.entittiesGridView = new System.Windows.Forms.DataGridView();
@@ -77,6 +77,7 @@ namespace LevelsCreator
             this.levelWordsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.langWordsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.levelsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.addLangStripButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.wordsGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -122,8 +123,8 @@ namespace LevelsCreator
             this.WordId,
             this.WordText,
             this.Complexity,
-            this.Wordlang,
-            this.AudioFileName});
+            this.AudioFileName,
+            this.Wordlang});
             this.wordsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wordsGridView.Location = new System.Drawing.Point(0, 0);
             this.wordsGridView.Name = "wordsGridView";
@@ -156,19 +157,19 @@ namespace LevelsCreator
             this.Complexity.MinimumWidth = 6;
             this.Complexity.Name = "Complexity";
             // 
-            // Wordlang
-            // 
-            this.Wordlang.DataPropertyName = "Lang";
-            this.Wordlang.HeaderText = "Language";
-            this.Wordlang.MinimumWidth = 6;
-            this.Wordlang.Name = "Wordlang";
-            // 
             // AudioFileName
             // 
             this.AudioFileName.DataPropertyName = "AudioFileName";
             this.AudioFileName.HeaderText = "Audio File Name";
             this.AudioFileName.MinimumWidth = 6;
             this.AudioFileName.Name = "AudioFileName";
+            // 
+            // Wordlang
+            // 
+            this.Wordlang.DataPropertyName = "Lang";
+            this.Wordlang.HeaderText = "Language";
+            this.Wordlang.MinimumWidth = 6;
+            this.Wordlang.Name = "Wordlang";
             // 
             // groupBox1
             // 
@@ -519,7 +520,8 @@ namespace LevelsCreator
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripButton,
-            this.saveToolStripButton});
+            this.saveToolStripButton,
+            this.addLangStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1221, 27);
@@ -544,6 +546,15 @@ namespace LevelsCreator
             this.saveToolStripButton.Size = new System.Drawing.Size(29, 24);
             this.saveToolStripButton.Text = "&Save";
             this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
+            // 
+            // addLangStripButton
+            // 
+            this.addLangStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.addLangStripButton.Image = ((System.Drawing.Image)(resources.GetObject("addLangStripButton.Image")));
+            this.addLangStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.addLangStripButton.Name = "addLangStripButton";
+            this.addLangStripButton.Size = new System.Drawing.Size(29, 24);
+            this.addLangStripButton.Text = "+";
             // 
             // Form1
             // 
@@ -628,13 +639,15 @@ namespace LevelsCreator
         private System.Windows.Forms.ContextMenuStrip levelsMenu;
         private System.Windows.Forms.ToolStripMenuItem AddLevelMenuItem;
         private System.Windows.Forms.BindingSource levelsBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EntityId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PictureFileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn WordId;
         private System.Windows.Forms.DataGridViewTextBoxColumn WordText;
         private System.Windows.Forms.DataGridViewTextBoxColumn Complexity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Wordlang;
         private System.Windows.Forms.DataGridViewTextBoxColumn AudioFileName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EntityId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PictureFileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Wordlang;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton addLangStripButton;
     }
 }
 
