@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ICanReadWordsGame.Pages.LevelsPage"
+             BackgroundImageSource="gamelistbackground.png"
+             xmlns:controls="clr-namespace:ICanReadWordsGame.Controls"
+             NavigationPage.HasNavigationBar="False"
+>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="0.08*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="page1Grid" Grid.Row="0" Margin="10,10,10,0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <controls:ImageTextButton x:Name="Back"  Grid.Row="1"
+                                  Margin="25,10,5,10"
+                                  ImageSource ="backarrow.png"
+                                  ClickedImageSource="backarrowclicked.png"
+                                  VerticalOptions="Center" 
+                                  HorizontalOptions="Start"
+                                  BackgroundColor="Transparent"
+                                  Command="{Binding BackCommand}"
+        />
+        <!---->
+    </Grid>
+</ContentPage>

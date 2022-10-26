@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ICanReadWordsGame.MainPage"
+             BackgroundImageSource="mpbackground.png"
+             xmlns:controls="clr-namespace:ICanReadWordsGame.Controls"
+             NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <AbsoluteLayout HorizontalOptions="Fill" VerticalOptions="Fill"  >
+
+            <controls:ImageTextButton  x:Name="StartButton"
+                                       ImageSource="startbtn.png"  
+                                       ClickedImageSource="startbtnclicked.png" 
+                                       BackgroundColor="Transparent"
+                                       AbsoluteLayout.LayoutBounds="0.18,0.53,100,100"
+                                       AbsoluteLayout.LayoutFlags="PositionProportional" 
+                                       Command ="{Binding StartGameCommand}" />
+        </AbsoluteLayout>
+    </ScrollView>
+
+</ContentPage>

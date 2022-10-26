@@ -1,0 +1,277 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>ICanReadWordsGame</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Display name -->
+		<ApplicationTitle>ICanReadWordsGame</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.icanreadwordsgame</ApplicationId>
+		<ApplicationIdGuid>77968252-D3B3-49EF-BFE2-FF0051E2FDD2</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+    <MauiAsset Include="Resources\Raw\Audio\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+    <MauiAsset Include="Resources\Raw\Audio\Words\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	
+
+
+  <ItemGroup>
+	  <None Remove="Resources\AppIcon\appicon.svg" />
+	 
+	  <None Remove="Resources\Fonts\OpenSans-Regular.ttf" />
+	  <None Remove="Resources\Fonts\OpenSans-Semibold.ttf" />
+	  <None Remove="Resources\Images\accoon_driver.png" />
+	  <None Remove="Resources\Images\animals_and_bees.png" />
+	  <None Remove="Resources\Images\answeredword.png" />
+	  <None Remove="Resources\Images\antilopa.png" />
+	  <None Remove="Resources\Images\armadillo.png" />
+	  <None Remove="Resources\Images\arrowback.png" />
+	  <None Remove="Resources\Images\backarrow.png" />
+	  <None Remove="Resources\Images\backarrowclicked.png" />
+	  <None Remove="Resources\Images\balloons.png" />
+	  <None Remove="Resources\Images\bears_with_cubs.png" />
+	  <None Remove="Resources\Images\bees_in_the_hive.png" />
+	  <None Remove="Resources\Images\camel.png" />
+	  <None Remove="Resources\Images\cat.png" />
+	  <None Remove="Resources\Images\caterpillar.png" />
+	  <None Remove="Resources\Images\caterpillar_in_the_apple.png" />
+	  <None Remove="Resources\Images\centipede.png" />
+	  <None Remove="Resources\Images\chameleon.png" />
+	  <None Remove="Resources\Images\chicken.png" />
+	  <None Remove="Resources\Images\chipmunk.png" />
+	  <None Remove="Resources\Images\clickedlockedlevel.png" />
+	  <None Remove="Resources\Images\clickednotexecutedlevel.png" />
+	  <None Remove="Resources\Images\clickedonestar.png" />
+	  <None Remove="Resources\Images\clickedthreestars.png" />
+	  <None Remove="Resources\Images\clickedtwostars.png" />
+	  <None Remove="Resources\Images\clownfish.png" />
+	  <None Remove="Resources\Images\cow.png" />
+	  <None Remove="Resources\Images\cow_with_calf.png" />
+	  <None Remove="Resources\Images\crow.png" />
+	  <None Remove="Resources\Images\cuttlefish.png" />
+	  <None Remove="Resources\Images\dancing_cow.png" />
+	  <None Remove="Resources\Images\deer.png" />
+	  <None Remove="Resources\Images\dog.png" />
+	  <None Remove="Resources\Images\dog_with_a_bone.png" />
+	  <None Remove="Resources\Images\dotnet_bot.svg" />
+	  <None Remove="Resources\Images\duck.png" />
+	  <None Remove="Resources\Images\duck_with_ducklings.png" />
+	  <None Remove="Resources\Images\eagle.png" />
+	  <None Remove="Resources\Images\elephant.png" />
+	  <None Remove="Resources\Images\elephants_in_africa.png" />
+	  <None Remove="Resources\Images\emu.png" />
+	  <None Remove="Resources\Images\enbtn.png" />
+	  <None Remove="Resources\Images\enbtnclicked.png" />
+	  <None Remove="Resources\Images\findpicgame_en.png" />
+	  <None Remove="Resources\Images\findpicgame_ru.png" />
+	  <None Remove="Resources\Images\findpicgame_ua.png" />
+	  <None Remove="Resources\Images\findwordgame_en.png" />
+	  <None Remove="Resources\Images\findwordgame_ru.png" />
+	  <None Remove="Resources\Images\findwordgame_ua.png" />
+	  <None Remove="Resources\Images\flying_squirrel.png" />
+	  <None Remove="Resources\Images\frog.png" />
+	  <None Remove="Resources\Images\fur_seal.png" />
+	  <None Remove="Resources\Images\gamelistbackground.png" />
+	  <None Remove="Resources\Images\gameover.png" />
+	  <None Remove="Resources\Images\giraffe.png" />
+	  <None Remove="Resources\Images\goldfish.png" />
+	  <None Remove="Resources\Images\goose.png" />
+	  <None Remove="Resources\Images\gorilla.png" />
+	  <None Remove="Resources\Images\guinea_pig.png" />
+	  <None Remove="Resources\Images\hammerheadshark.png" />
+	  <None Remove="Resources\Images\hare.png" />
+	  <None Remove="Resources\Images\hen.png" />
+	  <None Remove="Resources\Images\honey_badger.png" />
+	  <None Remove="Resources\Images\hornbill_bird.png" />
+	  <None Remove="Resources\Images\horse.png" />
+	  <None Remove="Resources\Images\horse_with_a_foal.png" />
+	  <None Remove="Resources\Images\icon.png" />
+	  <None Remove="Resources\Images\iguana.png" />
+	  <None Remove="Resources\Images\kangaroo.png" />
+	  <None Remove="Resources\Images\killerwhale.png" />
+	  <None Remove="Resources\Images\lama.png" />
+	  <None Remove="Resources\Images\levelslistbutton.png" />
+	  <None Remove="Resources\Images\levelslistbuttonclicked.png" />
+	  <None Remove="Resources\Images\lion.png" />
+	  <None Remove="Resources\Images\lizard.png" />
+	  <None Remove="Resources\Images\lockedlevel.png" />
+	  <None Remove="Resources\Images\mantis.png" />
+	  <None Remove="Resources\Images\meerkats_on_a_log.png" />
+	  <None Remove="Resources\Images\mother_elephant_with_a_baby.png" />
+	  <None Remove="Resources\Images\mpbackground.png" />
+	  <None Remove="Resources\Images\nextbutton.png" />
+	  <None Remove="Resources\Images\nextbuttonclicked.png" />
+	  <None Remove="Resources\Images\nextbuttondisabled.png" />
+	  <None Remove="Resources\Images\notansweredword.png" />
+	  <None Remove="Resources\Images\notexecutedlevel.png" />
+	  <None Remove="Resources\Images\onestar.png" />
+	  <None Remove="Resources\Images\onestarscore.png" />
+	  <None Remove="Resources\Images\orangutan.png" />
+	  <None Remove="Resources\Images\owl.png" />
+	  <None Remove="Resources\Images\owls_on_the_tree.png" />
+	  <None Remove="Resources\Images\parrot.png" />
+	  <None Remove="Resources\Images\peacock.png" />
+	  <None Remove="Resources\Images\pelican.png" />
+	  <None Remove="Resources\Images\pig.png" />
+	  <None Remove="Resources\Images\pigeon.png" />
+	  <None Remove="Resources\Images\pinguin.png" />
+	  <None Remove="Resources\Images\pinguin_cought_a_fish.png" />
+	  <None Remove="Resources\Images\pink_flamingo.png" />
+	  <None Remove="Resources\Images\pointer.png" />
+	  <None Remove="Resources\Images\racoon_with_fox_in_the_forest.png" />
+	  <None Remove="Resources\Images\repeatbutton.png" />
+	  <None Remove="Resources\Images\repeatbuttonclicked.png" />
+	  <None Remove="Resources\Images\rhino.png" />
+	  <None Remove="Resources\Images\rubtn.png" />
+	  <None Remove="Resources\Images\rubtnclicked.png" />
+	  <None Remove="Resources\Images\sawfish.png" />
+	  <None Remove="Resources\Images\scorebackground.png" />
+	  <None Remove="Resources\Images\scoresign.png" />
+	  <None Remove="Resources\Images\seahourse.png" />
+	  <None Remove="Resources\Images\seastar.png" />
+	  <None Remove="Resources\Images\sentence.png" />
+	  <None Remove="Resources\Images\sentenceclicked.png" />
+	  <None Remove="Resources\Images\shrew.png" />
+	  <None Remove="Resources\Images\snail.png" />
+	  <None Remove="Resources\Images\snake.png" />
+	  <None Remove="Resources\Images\snow_leopard.png" />
+	  <None Remove="Resources\Images\splashscreen.png" />
+	  <None Remove="Resources\Images\stag_beetle.png" />
+	  <None Remove="Resources\Images\stardino.png" />
+	  <None Remove="Resources\Images\startbtn.png" />
+	  <None Remove="Resources\Images\startbtnclicked.png" />
+	  <None Remove="Resources\Images\startbtn_clicked.png" />
+	  <None Remove="Resources\Images\threestars.png" />
+	  <None Remove="Resources\Images\threestarsscore.png" />
+	  <None Remove="Resources\Images\tortoise.png" />
+	  <None Remove="Resources\Images\tortoise_fell_in_love.png" />
+	  <None Remove="Resources\Images\toucan.png" />
+	  <None Remove="Resources\Images\turkey.png" />
+	  <None Remove="Resources\Images\twostars.png" />
+	  <None Remove="Resources\Images\twostarsscore.png" />
+	  <None Remove="Resources\Images\typewordgame_en.png" />
+	  <None Remove="Resources\Images\typewordgame_ru.png" />
+	  <None Remove="Resources\Images\typewordgame_ua.png" />
+	  <None Remove="Resources\Images\uabtn.png" />
+	  <None Remove="Resources\Images\uabtnclicked.png" />
+	  <None Remove="Resources\Images\vulture.png" />
+	  <None Remove="Resources\Images\whitebear.png" />
+	  <None Remove="Resources\Images\white_bear_drinks_a_juice.png" />
+	  <None Remove="Resources\Images\word.png" />
+	  <None Remove="Resources\Images\wordclicked.png" />
+	  <None Remove="Resources\Images\zerostarsscore.png" />
+	  <None Remove="Resources\Raw\AboutAssets.txt" />
+	  <None Remove="Resources\Raw\Audio\correctAnswer.mp3" />
+	  <None Remove="Resources\Raw\Audio\levelDoneSound.mp3" />
+	  <None Remove="Resources\Raw\Audio\wrongAnswerSound.mp3" />
+	  <None Remove="Resources\Splash\splash.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Maui" Version="1.3.0" />
+	  <PackageReference Include="CommunityToolkit.Maui.Core" Version="1.3.0" />
+	  <PackageReference Include="CommunityToolkit.Maui.Markup" Version="1.1.1" />
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.10" />
+	  <PackageReference Include="Plugin.Maui.Audio" Version="0.1.0-preview1" />
+	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+	  <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.2" />
+	  <PackageReference Include="SQLitePCLRaw.core" Version="2.1.2" />
+	  <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.2" />
+	  <PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Controls\ImageTextButtonNew.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\FindWordGamePage.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\GameOverPage.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\GameResultListPage.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\LevelsPage.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+    <MauiXaml Update="Pages\GameOverPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Pages\GameResultListPage.xaml">
+    <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Controls\ImageTextButtonNew.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\LevelsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+    <MauiXaml Update="Pages\FindWordGamePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\Colors.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\Styles.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Update="Resources\Images\dotnet_bot.svg">
+	    <BaseSize>168,208</BaseSize>
+	  </MauiImage>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiAsset Update="Resources\Raw\AboutAssets.txt">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	</ItemGroup>
+
+</Project>

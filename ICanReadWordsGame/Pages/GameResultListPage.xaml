@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ICanReadWordsGame.Pages.GameResultPage"
+             xmlns:converters="clr-namespace:ICanReadWordsGame.Converters"
+             xmlns:controls="clr-namespace:ICanReadWordsGame.Controls"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             BackgroundImageSource="scorebackground.png"
+             NavigationPage.HasNavigationBar="False"
+>
+    <ScrollView>
+        <AbsoluteLayout>
+
+
+
+        <controls:ImageTextButton x:Name="List"  
+                        Margin="0,0,2,0"
+                        ImageSource ="levelslistbutton.png"
+                        ClickedImageSource="levelslistbuttonclicked.png"
+                        AbsoluteLayout.LayoutBounds="0.1,0.755,0.26,0.12" 
+                        HorizontalOptions="EndAndExpand"
+                        AbsoluteLayout.LayoutFlags="All" 
+                        BackgroundColor="Transparent"
+                        Command="{Binding ShowLevelsListCommand}"
+                              >
+        </controls:ImageTextButton>
+
+
+        <controls:ImageTextButton  x:Name="Repeat"  
+                        Margin="0,0,2,0"
+                                    ImageSource ="repeatbutton.png"
+                        ClickedImageSource="repeatbuttonclicked.png"
+                     HorizontalOptions="StartAndExpand"
+                       AbsoluteLayout.LayoutBounds="0.5,0.755,0.26,0.12" 
+                 AbsoluteLayout.LayoutFlags="All" 
+                      BackgroundColor="Transparent"
+                     Command="{Binding RepeatLevelCommand}"
+                              >
+        </controls:ImageTextButton>
+        <controls:ImageTextButton x:Name="Next"  
+                        Margin="0,0,2,0"
+                                  ImageSource ="nextbutton.png"
+                        ClickedImageSource="nextbuttonclicked.png"
+                     HorizontalOptions="StartAndExpand"
+                       AbsoluteLayout.LayoutBounds="0.9,0.755,0.26,0.12" 
+                 AbsoluteLayout.LayoutFlags="All" 
+                      BackgroundColor="Transparent"
+                     IsEnabled="{Binding NextLevelExists}"
+                     Command="{Binding NextLevelCommand}"
+                              >
+
+            <controls:ImageTextButton.Triggers>
+                <DataTrigger TargetType="controls:ImageTextButton" Binding="{Binding NextLevelExists}" Value="True">
+                    <Setter Property="ImageSource" Value="nextbutton.png" />
+                </DataTrigger>
+                <DataTrigger TargetType="controls:ImageTextButton" Binding="{Binding NextLevelExists}" Value="False">
+                    <Setter Property="ImageSource" Value="nextbuttondisabled.png" />
+                </DataTrigger>
+            </controls:ImageTextButton.Triggers>
+        </controls:ImageTextButton>
+        
+        
+        <Label     x:Name="score"  AbsoluteLayout.LayoutBounds="0.86,0.24,0.23,0.1" 
+                 AbsoluteLayout.LayoutFlags="All" 
+               VerticalOptions="Center" 
+               Text="{Binding Score}"
+               HorizontalOptions="Center"
+               FontAttributes="Bold"
+                     FontSize="19"
+               TextColor="#F3453B" 
+               BackgroundColor="Transparent"
+             />
+        <Image  AbsoluteLayout.LayoutBounds="0.8,0.4,0.5,0.3" 
+                 AbsoluteLayout.LayoutFlags="All" >
+            <Image.Triggers>
+                <DataTrigger TargetType="Image" Binding="{Binding StarsCount}" Value="0">
+                    <Setter Property="Source" Value="zerostarsscore.png" />
+                </DataTrigger>
+                <DataTrigger TargetType="Image" Binding="{Binding StarsCount}" Value="1">
+                    <Setter Property="Source" Value="onestarscore.png" />
+                </DataTrigger>
+                <DataTrigger TargetType="Image" Binding="{Binding StarsCount}" Value="2">
+                    <Setter Property="Source" Value="twostarsscore.png" />
+                </DataTrigger>
+                <DataTrigger TargetType="Image" Binding="{Binding StarsCount}" Value="3">
+                    <Setter Property="Source" Value="threestarsscore.png" />
+                </DataTrigger>
+            </Image.Triggers>
+        </Image>
+
+
+    </AbsoluteLayout>
+    </ScrollView>
+</ContentPage>

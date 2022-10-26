@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ICanReadWordsGame.Pages.FindWordGamePage"
+             xmlns:converters="clr-namespace:ICanReadWordsGame.Converters"
+             xmlns:controls="clr-namespace:ICanReadWordsGame.Controls"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             BackgroundImageSource="gamelistbackground.png"
+             NavigationPage.HasNavigationBar="False"
+>
+
+    <ContentPage.Resources>
+        <converters:IsLessThanConverter x:Key="IsLessThanConverter"/>
+        <sys:Int32 x:Key="Int1">1</sys:Int32>
+        <sys:Int32 x:Key="Int2">2</sys:Int32>
+        <sys:Int32 x:Key="Int3">3</sys:Int32>
+        <sys:Int32 x:Key="Int4">4</sys:Int32>
+        <sys:Int32 x:Key="Int5">5</sys:Int32>
+      
+    </ContentPage.Resources>
+    <ScrollView>
+        <AbsoluteLayout x:Name="absoluteLayout"  >
+            <!---->
+            <Grid AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <Grid.RowDefinitions>
+                <RowDefinition  Height="66*"></RowDefinition>
+                <RowDefinition Height="34*"></RowDefinition>
+            </Grid.RowDefinitions>
+           
+
+            <Frame Grid.Row="0" Margin="4,3,4,0"  
+                   CornerRadius="20" BorderColor="#F3453B" >
+                <Image  x:Name="picture" 
+                              Source="{Binding AnswerWordPicture}"            >
+                    <Image.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding AnswerVoiceCommand}"   />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Frame>
+            <Grid x:Name="wordsGrid" Grid.Row="1"  Margin="4,0,4,4" >
+                </Grid>
+
+          
+        </Grid>
+
+        <Image  Source="scoresign.png"
+                HorizontalOptions="Center" 
+                VerticalOptions="Center" 
+                BackgroundColor="Transparent"
+                AbsoluteLayout.LayoutBounds="0.045,0.007,0.075,0.075"
+                AbsoluteLayout.LayoutFlags="All" 
+               />
+        <Label       AbsoluteLayout.LayoutBounds="0.13,0.007,0.15,0.075" 
+                 AbsoluteLayout.LayoutFlags="All" 
+               VerticalOptions="Center" 
+               Text="{Binding Score}"
+               HorizontalOptions="Start"
+               FontAttributes="Bold"
+                     FontSize="10"
+               TextColor="#F3453B" 
+               BackgroundColor="Transparent"
+             />
+
+
+        <controls:ImageTextButton x:Name="Back"  
+               ImageSource ="backarrow.png"
+               ClickedImageSource="backarrowclicked.png"
+               AbsoluteLayout.LayoutBounds="0.93,0.005,0.11,0.08" 
+               AbsoluteLayout.LayoutFlags="All" 
+               VerticalOptions="Center" 
+               HorizontalOptions="Center"
+               BackgroundColor="Transparent"
+               Command="{Binding BackCommand}"/>
+
+
+
+        <Grid x:Name ="progressGrid" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.02,0.5,0.05">
+         
+
+            <!--<Image x:Name="answeredword1"
+               AbsoluteLayout.LayoutBounds="0.8,0.8,25,25"
+                 AbsoluteLayout.LayoutFlags="PositionProportional"
+               Margin="1,1,1,1" Source="answeredword.png" Grid.Column="0" >
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" 
+                                 Value="False"
+                                 Binding="{Binding CorrectAnswers ,Converter={StaticResource IsLessThanConverter},ConverterParameter ={StaticResource Int1}}" >
+                        <Setter Property="Source" Value="answeredword.png" />
+                    </DataTrigger>
+                </Image.Triggers>
+            </Image>-->
+
+        </Grid>
+
+
+        <Image x:Name="balloons" Source="balloons.png"
+                   HorizontalOptions="CenterAndExpand" VerticalOptions="End" 
+               BackgroundColor="Transparent"
+                 AbsoluteLayout.LayoutBounds="1,2,1,0.6"
+                 AbsoluteLayout.LayoutFlags="All" 
+               >
+            <!--<Image.Triggers>
+                <DataTrigger TargetType="Image"  Binding="{Binding IsRefreshing}" Value="True">
+                    <DataTrigger.EnterActions>
+                        <behaviors:AnimationTrigger Action="Start" />
+                    </DataTrigger.EnterActions>
+                </DataTrigger>
+                
+            </Image.Triggers>
+
+        </Image>
+        <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+            </Image.GestureRecognizers>-->
+
+        </Image>
+
+
+
+
+
+    </AbsoluteLayout>
+        </ScrollView>
+</ContentPage>
