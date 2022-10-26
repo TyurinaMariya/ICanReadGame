@@ -20,7 +20,7 @@ namespace ICanRead.Core.Model
         {
             SQLitePCL.Batteries_V2.Init();
 
-         //   this.Database.EnsureCreated();
+            //   this.Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

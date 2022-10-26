@@ -16,7 +16,6 @@ using static ICanRead.Core.ViewModels.LevelsViewModel;
 
 namespace ICanRead.Core.Pages
 {
-    //[MvxMasterDetailPagePresentation]
     public partial class LevelsPage : MvxContentPage
     {
         const int levelRowsCount = 5;

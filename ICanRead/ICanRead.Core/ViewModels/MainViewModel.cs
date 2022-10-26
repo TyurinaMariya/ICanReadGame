@@ -58,7 +58,7 @@ namespace ICanRead.Core.ViewModels
 
                
 
-                await _navigationService.Navigate<LevelsViewModel, (string lang, GameTypes gameType)>
+                await  _navigationService.Navigate<LevelsViewModel, (string lang, GameTypes gameType)>
                                           ((CurrentLanguage, GameTypes.FindWord));
 
                 //await _navigationService.Navigate<GameOverViewModel, (string lang, Level level, int starsCount, int points)>
