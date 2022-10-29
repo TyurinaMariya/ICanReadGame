@@ -35,11 +35,9 @@
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -91,7 +89,6 @@
 	  <None Remove="Resources\Images\deer.png" />
 	  <None Remove="Resources\Images\dog.png" />
 	  <None Remove="Resources\Images\dog_with_a_bone.png" />
-	  <None Remove="Resources\Images\dotnet_bot.svg" />
 	  <None Remove="Resources\Images\duck.png" />
 	  <None Remove="Resources\Images\duck_with_ducklings.png" />
 	  <None Remove="Resources\Images\eagle.png" />
@@ -173,7 +170,6 @@
 	  <None Remove="Resources\Images\snail.png" />
 	  <None Remove="Resources\Images\snake.png" />
 	  <None Remove="Resources\Images\snow_leopard.png" />
-	  <None Remove="Resources\Images\splashscreen.png" />
 	  <None Remove="Resources\Images\stag_beetle.png" />
 	  <None Remove="Resources\Images\stardino.png" />
 	  <None Remove="Resources\Images\startbtn.png" />
@@ -202,8 +198,18 @@
 	  <None Remove="Resources\Raw\Audio\correctAnswer.mp3" />
 	  <None Remove="Resources\Raw\Audio\levelDoneSound.mp3" />
 	  <None Remove="Resources\Raw\Audio\wrongAnswerSound.mp3" />
-	  <None Remove="Resources\Splash\splash.svg" />
+	  <None Remove="Resources\Splash\splash1.png" />
 	</ItemGroup>
+
+	
+
+
+  <ItemGroup>
+    <MauiSplashScreen Include="Resources\Splash\splash1.png" />
+  </ItemGroup>
+
+	
+
 
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Maui" Version="1.3.0" />
@@ -262,11 +268,6 @@
 	  </MauiXaml>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <MauiImage Update="Resources\Images\dotnet_bot.svg">
-	    <BaseSize>168,208</BaseSize>
-	  </MauiImage>
-	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiAsset Update="Resources\Raw\AboutAssets.txt">

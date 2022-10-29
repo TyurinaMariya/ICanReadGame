@@ -3,7 +3,7 @@
 // <url>https://www.linkedin.com/in/pauldatsyuk/</url>
 // ---------------------------------------------------------------
 
-using System.Data.SqlTypes;
+using System.Diagnostics;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ICanReadWordsGame.Model;
@@ -118,65 +118,93 @@ namespace ICanReadWordsGame.ViewModel
             await _playerService.PlayWord(_answerWord);
         }
 
-        [RelayCommand]
+        private bool _chooseWordInProcess = false;
+
+       
+
+        [RelayCommand ]
         public async Task ChooseWord(Word word)
         {
-            if (word .Equals(_answerWord))
+            if (_chooseWordInProcess)
+                return;
+
+            try
             {
-                CorrectAnswers++;
-                if (_wordNumber >= _level.Words.Count - 1)
+                _chooseWordInProcess = true;
+                if (word.Equals(_answerWord))
                 {
-                    IsLevelEnded = true;
-                    await _playerService.PlayWord(word);
-                    await _playerService.PlayLevelDoneSound();
-
-                    await Task.Delay(6000);
-                    var stars = GetStars();
-
-                    var nextLevel = await _dataManager.GetNextLevel(_level);
-                    if (nextLevel == null)
-                        await _navigationService.CloseAndNavigate(typeof(GameOverPage),
-                            new Dictionary<string, object> {
-                                {nameof(GameOverPage.CurrentLanguage),_currentLanguage},
-                                { nameof(GameOverPage.LevelId),_level.Id},
-                                { nameof(GameOverPage.StarsCount),stars},
-                                {nameof(GameOverPage.Points), GetPoints(stars)}});
-                    else
-                        await _navigationService.CloseAndNavigate(typeof(GameResultPage),
-                            new Dictionary<string, object> {
-                                {nameof(GameResultPage.CurrentLanguage),_currentLanguage},
-                                { nameof(GameResultPage.LevelId),_level.Id},
-                                { nameof(GameResultPage.StarsCount),stars},
-                                {nameof(GameResultPage.Points), GetPoints(stars)}});
-                }
-
-                else
-                {
-                    //await _playerService.PlayWord(word);
-                    //await _playerService.PlayCorrectAnswerSound();
-                    //_wordNumber++;
-                    //await Task.Delay(1000);
-                    //await InitWords();
-
-                    async void NextWord(object sender, EventArgs e)
+                    CorrectAnswers++;
+                    if (_wordNumber >= _level.Words.Count - 1)
                     {
-                        _wordNumber++;
-                        await InitWords();
+                        IsLevelEnded = true;
+                        await _playerService.PlayWord(word);
+                        await _playerService.PlayLevelDoneSound();
+
+                        await Task.Delay(6000);
+                        var stars = GetStars();
+
+                        var nextLevel = await _dataManager.GetNextLevel(_level);
+                        if (nextLevel == null)
+                            await _navigationService.CloseAndNavigate(typeof(GameOverPage),
+                                new Dictionary<string, object>
+                                {
+                                    { nameof(GameOverPage.CurrentLanguage), _currentLanguage },
+                                    { nameof(GameOverPage.LevelId), _level.Id },
+                                    { nameof(GameOverPage.StarsCount), stars },
+                                    { nameof(GameOverPage.Points), GetPoints(stars) }
+                                });
+                        else
+                            await _navigationService.CloseAndNavigate(typeof(GameResultPage),
+                                new Dictionary<string, object>
+                                {
+                                    { nameof(GameResultPage.CurrentLanguage), _currentLanguage },
+                                    { nameof(GameResultPage.LevelId), _level.Id },
+                                    { nameof(GameResultPage.StarsCount), stars },
+                                    { nameof(GameResultPage.Points), GetPoints(stars) }
+                                });
                     }
 
-                    var player = _playerService.GetSeriesPlayer();
-                    await player.AddWord(word)
-                        .AddCorrectAnswerSound()
-                        .AddCallback(NextWord)
+                    else
+                    {
+                        //await _playerService.PlayWord(word);
+                        //await _playerService.PlayCorrectAnswerSound();
+                        //_wordNumber++;
+                        //await Task.Delay(1000);
+                        //await InitWords();
+
+
+                        async void NextWord(object sender, EventArgs e)
+                        {
+
+                            _wordNumber++;
+                            await InitWords();
+                            _chooseWordInProcess = false;
+
+                        }
+
+                        var player = _playerService.GetSeriesPlayer();
+                        await player.AddWord(word)
+                            .AddCorrectAnswerSound()
+                            .AddCallback(NextWord)
+                            .Play();
+
+                    }
+                }
+                else
+                {
+                    await _playerService.GetSeriesPlayer()
+                        .AddWord(word)
+                        .AddCallback((s,e) =>
+                        {
+                            _wrongAnswers++;
+                            _chooseWordInProcess = false;
+                        })
                         .Play();
 
                 }
             }
-            else
+            finally
             {
-                await _playerService.PlayWord(word);
-                await Task.Delay(2000);
-                _wrongAnswers++;
             }
         }
 
